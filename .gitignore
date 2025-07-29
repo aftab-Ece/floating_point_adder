@@ -6,9 +6,9 @@
 *.vpd
 *.txt
 *.vvp
-.qpf
-.qsf
-.qws
+*.qpf
+*.qsf
+*.qws
 # Ignore synthesis and simulation tool files
 *.sdc
 *.synth
