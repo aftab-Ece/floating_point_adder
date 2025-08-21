@@ -16,7 +16,7 @@
 *.synthesis
 
 
-# Ignore output files
+# Ignore output and files
 out
 
 # Ignore ModelSim and Icarus-generated folders
@@ -29,6 +29,7 @@ db/
 incremental_db/
 output_files/
 simulation/modelsim/
+quartus files/
 
 # Ignore temporary files
 *~

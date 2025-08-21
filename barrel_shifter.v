@@ -5,10 +5,11 @@ module barrel_shifter #(
 (
     input [width-1:0] in,
     input [shift_width-1:0] shift_amount,
-    output reg sticky,
-    output reg [width+1:0] out
+    output reg [width+2:0] out
+
 );
     reg[width+1:0] stage;
+    reg sticky; // Sticky bit to indicate if any bits were shifted out
     always @(*) begin
         sticky=0;
         stage = {in, 2'b00};
@@ -31,7 +32,7 @@ module barrel_shifter #(
             sticky = (|stage[15:0])|sticky;
             stage = {16'b0000000000000000, stage[width+1:16]};
         end
-        out = stage[width-1:0]; // Assign output
+        out = {stage,sticky}; // Assign output
 
     end
 endmodule
