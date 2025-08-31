@@ -27,7 +27,7 @@ module spl_case_handler(
             end 
             else 
             begin
-                spl_case = 0; // Set spl_case for opposite infinities
+                spl_case = 1; // Set spl_case for opposite infinities
                 result = 32'h7FC00000; // Result is NaN
             end
         end
@@ -36,12 +36,14 @@ module spl_case_handler(
             spl_case = 1; // Set spl_case for one infinity
             result = 32'h7F800000; // Result is the other infinity
         end
-        // else if (zero_A && zero_B)
-        // begin
-        //     spl_case = 1; // Set spl_case for oboth zeros
-        //     result = 32'h00000000; // Result is the 0
-        // end
-        
-        
+        else if (zero_A && zero_B)
+        begin
+            spl_case = 1; // Set spl_case for oboth zeros
+            result = 32'h00000000; // Result is the 0
+        end
+        else begin
+            spl_case = 0; // No special case
+            result = 32'h00000000; // Default result (not used)
+        end
     end
 endmodule
